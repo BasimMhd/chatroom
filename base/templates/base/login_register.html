@@ -16,14 +16,20 @@
 
         <form class="form" action="" method="POST">
           {% csrf_token %}
-          <div class="form__group form__group">
-            <label for="room_name">Email</label>
-            <input id="username" name="email" type="email" placeholder="e.g. dennis_ivy@email.com />
+
+          <div class="form__group">
+            <label for="username">Email</label>
+            
+            <input id="username" name="email" type="email" placeholder="enter email address"/>
+          
           </div>
-          <div class=" form__group">
+          
+          <div class="form__group">
+          
             <label for="password">Password</label>
-            <input id="password" name="password" type="password"
-              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+            
+            <input id="password" name="password" type="password" placeholder="&ast;&ast;&ast;&ast;&ast;&ast;&ast;&ast;"/>
+          
           </div>
 
           <button class="btn btn--main" type="submit">
@@ -87,7 +93,7 @@
 
         <div class="auth__action">
           <p>Already signed up yet?</p>
-          <a href="{% url 'login' %}" class="btn btn--link">Sign Up</a>
+          <a href="{% url 'login' %}" class="btn btn--link">Sign In</a>
         </div>
       </div>
     </div>

@@ -7,19 +7,12 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message, User
 from .forms import RoomForm, UserForm, MyUserCreationForm
 
-# Create your views here.
-
-# rooms = [
-#     {'id': 1, 'name': 'Lets learn python!'},
-#     {'id': 2, 'name': 'Design with me'},
-#     {'id': 3, 'name': 'Frontend developers'},
-# ]
 
 
 def loginPage(request):
     page = 'login'
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('home')               #not allow relogin
 
     if request.method == 'POST':
         email = request.POST.get('email').lower()
@@ -68,7 +61,7 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
     rooms = Room.objects.filter(
-        Q(topic__name__icontains=q) |
+        Q(topic__name__icontains=q) |    
         Q(name__icontains=q) |
         Q(description__icontains=q)
     )
